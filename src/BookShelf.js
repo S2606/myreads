@@ -5,20 +5,20 @@ import Book from './Book';
 class BookShelf extends Component {
     render(){
 
-        const { shelfTitle, books} = this.props;
+        const { shelfTitle, books, handleStatusChange, bookShelfTypes} = this.props;
 
         return (
             <div className="bookshelf">
                 <h2 className="bookshelf-title">{shelfTitle}</h2>
                   <div className="bookshelf-books">
-                    <ol className="books-grid">
+                    <ol className="books-grid-centre">
                         {
                             books.map((singleBook, index) => (
                             <li key={index}>
                                 <Book 
-                                book_image={singleBook.imageLinks.smallThumbnail}
-                                book_title={singleBook.title}
-                                book_authors={singleBook.authors}/>
+                                book={singleBook}
+                                handleStatusChange={handleStatusChange}
+                                bookShelfTypes={bookShelfTypes}/>
                             </li> 
                             ))
                         }

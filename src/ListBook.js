@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
 import PropTypes from "prop-types";
 import BookShelf from './BookShelf';
+import { fetchKeyArrayfromDict, isShelfTypeIgnored } from './utils';
 
 class ListBook extends Component {
     render(){
-        const { bookShelfType, books, ShelfStatusKey} = this.props;
+        const { bookShelfType, books, handleStatusChange} = this.props;
+        const keyArr = fetchKeyArrayfromDict(bookShelfType);
 
         return(
             <div className="list-books">
@@ -14,11 +16,15 @@ class ListBook extends Component {
                 <div className="list-books-content">
                     <div>
                     {
-                        ShelfStatusKey().map((bookShelf, index) => (
+                        keyArr
+                        .filter(bookShelf => !isShelfTypeIgnored(bookShelf))
+                        .map((bookShelf, index) => (
                             <BookShelf
                                 key={index}
                                 shelfTitle={bookShelfType[bookShelf]}
                                 books={books.filter(book => book.shelf === bookShelf)}
+                                handleStatusChange={handleStatusChange}
+                                bookShelfTypes={bookShelfType}
                             />
                         ))
                     }
