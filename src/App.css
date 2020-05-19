@@ -124,7 +124,7 @@ button:active {
 
 /* books grid */
 
-.books-grid {
+.books-grid-centre {
   list-style-type: none;
   padding: 0;
   margin: 0;
@@ -133,7 +133,21 @@ button:active {
   flex-wrap: wrap;
 }
 
-.books-grid li {
+.books-grid-left {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  justify-content: left;
+  flex-wrap: wrap;
+}
+
+.books-grid-centre li {
+  padding: 10px 15px;
+  text-align: left;
+}
+
+.books-grid-left li {
   padding: 10px 15px;
   text-align: left;
 }
