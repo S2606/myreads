@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from "prop-types";
 import BookShelf from './BookShelf';
+import { Link } from 'react-router-dom';
 import { fetchKeyArrayfromDict, isShelfTypeIgnored } from './utils';
 
 class ListBook extends Component {
@@ -29,11 +30,13 @@ class ListBook extends Component {
                         ))
                     }
                     </div>
-                    {/*
-                    <div className="open-search">
-                        <button onClick={() => this.setState({ showSearchPage: true })}>Add a book</button>
-                    </div>
-                    */}
+                    <Link to='/search'>
+                        <div className="open-search">
+                            <button className="open-search">
+                                Add a book
+                            </button>
+                        </div>
+                    </Link>
                 </div>
             </div>
           );
