@@ -1,18 +1,27 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import * as BooksAPI from './BooksAPI';
 import Book from './Book';
 
 class SearchBook extends Component{
 
     state = {
-        searchTerm: '',
+        searchedBooks: [],
     }
 
-    handleSearchTermChange = event => {
+    handleSearchQuery = query => {
+      if(query===""){
         this.setState({
-            searchTerm: event.target.value,
+          searchedBooks: []
         });
-        this.props.handleSearchQuery(this.state.searchTerm);
+      } else {
+        BooksAPI.search(query).then(
+          books => this.setState(() => ({
+              // Checking if API does not throw an error for better error handling
+              searchedBooks: books !== undefined && books['error'] === undefined ? books:[],
+          }))
+        );
+      }
     } 
 
     render(){
