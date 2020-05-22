@@ -8,4 +8,19 @@ export const fetchKeyArrayfromDict = dict => {
     return key_arr;
   }
 
-export const isShelfTypeIgnored = shelfType => ignoredShelfType.includes(shelfType)
+export const isShelfTypeIgnored = shelfType => ignoredShelfType.includes(shelfType)export const debounce = (func, delay) => {
+
+export const debounce = (func, delay) => {
+  /**
+    * Debouncing function calls for better performance
+    * @param func Function to be delayed
+    * @param delay time to be delayed for
+  */
+  let inDebounce
+  return function() {
+    const context = this
+    const args = arguments
+    clearTimeout(inDebounce)
+    inDebounce = setTimeout(() => func.apply(context, args), delay)
+  }
+}

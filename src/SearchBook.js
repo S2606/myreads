@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import * as BooksAPI from './BooksAPI';
 import Book from './Book';
+import { debounce } from './utils';
 
 class SearchBook extends Component{
 
@@ -25,6 +26,11 @@ class SearchBook extends Component{
     } 
 
     render(){
+    handleSearchTermChange = event => {
+        debounce(
+          this.handleSearchQuery(event.target.value),
+          5000);
+      } 
 
         const { searchedBooks, handleStatusChange, bookShelfType } = this.props;
 
