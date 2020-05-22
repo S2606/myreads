@@ -27,4 +27,11 @@ class Book extends Component{
     }
 }
 
+Book.propTypes = {
+    handleStatusChange: PropTypes.func.isRequired,
+    book: PropTypes.object.isRequired,
+    bookShelfTypes: PropTypes.object.isRequired,
+    getCurrentBookStatus: PropTypes.func
+  }
+
 export default Book;

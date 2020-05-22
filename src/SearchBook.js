@@ -69,4 +69,10 @@ class SearchBook extends Component{
     }
 }
 
+SearchBook.propTypes = {
+  handleStatusChange: PropTypes.func.isRequired,
+  bookShelfTypes: PropTypes.object.isRequired,
+  getCurrentBookStatus: PropTypes.func.isRequired,
+}
+
 export default SearchBook;

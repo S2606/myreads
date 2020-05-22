@@ -43,4 +43,10 @@ class ListBook extends Component {
     }
 }
 
+ListBook.propTypes = {
+    handleStatusChange: PropTypes.func.isRequired,
+    books: PropTypes.array.isRequired,
+    bookShelfTypes: PropTypes.object.isRequired,
+  }
+
 export default ListBook;
