@@ -5,7 +5,7 @@ import ShelfChange from './ShelfChange';
 class Book extends Component{
     render() {
 
-        const {book, handleStatusChange, bookShelfTypes} = this.props;
+        const {book, handleStatusChange, bookShelfTypes, getCurrentBookStatus } = this.props;
 
         return (
             <div className="book">
@@ -13,15 +13,20 @@ class Book extends Component{
                 <div className="book-cover" 
                 style={{ width: 128, 
                          height: 193, 
-                         backgroundImage: `url(${book.imageLinks.smallThumbnail})` }}></div>
+                         backgroundImage: `url(${book.imageLinks?book.imageLinks.smallThumbnail:null})` }}></div>
                 <ShelfChange
+                getCurrentBookStatus={getCurrentBookStatus}
                 handleStatusChange={handleStatusChange}
-                bookTitle={book.title}
-                bookCurrentShelf={book.shelf}
+                currentBook={book}
                 bookShelfTypes={bookShelfTypes}/>
                 </div>
                 <div className="book-title">{book.title}</div>
-                <div className="book-authors">{book.authors}</div>
+                <div className="book-authors">
+                    {book.authors?
+                    book.authors.reduce((acc, cur) => acc+","+cur):
+                    null
+                    }
+                </div>
             </div>
         );
     }

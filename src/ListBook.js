@@ -6,9 +6,8 @@ import { fetchKeyArrayfromDict, isShelfTypeIgnored } from './utils';
 
 class ListBook extends Component {
     render(){
-        const { bookShelfType, books, handleStatusChange} = this.props;
-        const keyArr = fetchKeyArrayfromDict(bookShelfType);
-
+        const { bookShelfTypes, books, handleStatusChange} = this.props;
+        const keyArr = fetchKeyArrayfromDict(bookShelfTypes);
         return(
             <div className="list-books">
                 <div className="list-books-title">
@@ -22,10 +21,10 @@ class ListBook extends Component {
                         .map((bookShelf, index) => (
                             <BookShelf
                                 key={index}
-                                shelfTitle={bookShelfType[bookShelf]}
+                                shelfTitle={bookShelfTypes[bookShelf]}
                                 books={books.filter(book => book.shelf === bookShelf)}
                                 handleStatusChange={handleStatusChange}
-                                bookShelfTypes={bookShelfType}
+                                bookShelfTypes={bookShelfTypes}
                             />
                         ))
                     }

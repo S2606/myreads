@@ -4,15 +4,15 @@ import './App.css';
 import ListBook from './ListBook';
 import SearchBook from './SearchBook';
 import { Route } from 'react-router-dom';
-import { fetchKeyArrayfromDict } from './utils';
 
 class BooksApp extends React.Component {
   state = {
-    bookShelfStatus: {
+    bookShelfTypes: {
       "move": "Move to..",
       "currentlyReading": "Currently Reading",
       "wantToRead": "Want to Read",
       "read": "Read",
+      "none": "None"
     },
     books: [],
   }
@@ -81,17 +81,17 @@ class BooksApp extends React.Component {
       <div className="app">
         <Route exact path='/' render={() => (
             <ListBook
-            bookShelfType={this.state.bookShelfStatus}
+            bookShelfTypes={this.state.bookShelfTypes}
             books={this.state.books}
             handleStatusChange={this.handleStatusChange}
             />
         )}/>
         <Route path='/search' render={() => (
             <SearchBook
-            searchedBooks={this.state.searchedBooks}
+            getCurrentBookStatus={this.getCurrentBookStatus}
             handleStatusChange={this.handleStatusChange}
-            bookShelfType={this.state.bookShelfStatus}
-            handleSearchQuery={this.handleSearchQuery}/>
+            bookShelfTypes={this.state.bookShelfTypes}
+            />
         )}/>
       </div>
     )

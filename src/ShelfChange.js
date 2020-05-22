@@ -5,11 +5,13 @@ import { fetchKeyArrayfromDict, isShelfTypeIgnored } from './utils';
 class ShelfChange extends Component{
 
     state = {
-        value: this.props.bookCurrentShelf,
+        value: this.props.currentBook.shelf!==undefined?
+        this.props.currentBook.shelf:
+        this.props.getCurrentBookStatus(this.props.currentBook.id),
     };
 
     handleSelectChange = event => {
-        this.props.handleStatusChange(event.target.value, this.props.bookTitle);
+        this.props.handleStatusChange(this.props.currentBook, event.target.value);
     }
 
     render() {
@@ -19,7 +21,9 @@ class ShelfChange extends Component{
 
         return (
             <div className="book-shelf-changer">
-                <select value={this.state.value} onChange={this.handleSelectChange}>
+                <select 
+                value={this.state.value} 
+                onChange={this.handleSelectChange}>
                 {
                     keyArr.map((bookShelf, index) => (
                         (<option 
