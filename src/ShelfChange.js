@@ -7,12 +7,12 @@ class ShelfChange extends Component{
     state = {
         value: this.props.currentBook.shelf!==undefined?
         this.props.currentBook.shelf:
-        this.props.getCurrentBookStatus(this.props.currentBook.id),
+        this.props.getCurrentBookShelf(this.props.currentBook.id),
     };
 
     handleSelectChange = event => {
-        this.props.handleStatusChange(this.props.currentBook, event.target.value);
-    }
+        this.props.handleShelfChange(this.props.currentBook, event.target.value);
+    };
 
     render() {
 
@@ -40,9 +40,9 @@ class ShelfChange extends Component{
 }
 
 ShelfChange.propTypes = {
-    handleStatusChange: PropTypes.func.isRequired,
+    handleShelfChange: PropTypes.func.isRequired,
     bookShelfTypes: PropTypes.object.isRequired,
-    getCurrentBookStatus: PropTypes.func
+    getCurrentBookShelf: PropTypes.func
   }
 
 export default ShelfChange;

@@ -22,16 +22,14 @@ class BooksApp extends React.Component {
     this.setState(prevState => ({
       books: [...prevState.books, book],
     }));
-  }
+  };
 
-  getCurrentBookStatus = (bookId) => {
+  getCurrentBookShelf = (bookId) => {
     let requiredBook = this.state.books.filter(book => book.id===bookId);
     return requiredBook.length>0?requiredBook[0].shelf:"none";
-  }
+  };
 
-
-
-  handleStatusChange = (book, shelf) => {
+  handleShelfChange = (book, shelf) => {
     BooksAPI.update(book, shelf).then(
       bookShelfType => {
           let currentlyReadingBookShelfType = [];
@@ -120,14 +118,14 @@ class BooksApp extends React.Component {
             <ListBook
             bookShelfTypes={this.state.bookShelfTypes}
             books={this.state.books}
-            handleStatusChange={this.handleStatusChange}
+            handleShelfChange={this.handleShelfChange}
             handleRatingChange={this.handleRatingChange}
             />
         )}/>
         <Route path='/search' render={() => (
             <SearchBook
-            getCurrentBookStatus={this.getCurrentBookStatus}
-            handleStatusChange={this.handleStatusChange}
+            getCurrentBookShelf={this.getCurrentBookShelf}
+            handleShelfChange={this.handleShelfChange}
             bookShelfTypes={this.state.bookShelfTypes}
             handleRatingChange={this.handleRatingChange}
             />

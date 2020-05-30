@@ -11,14 +11,14 @@ class Book extends Component{
 
     handleRatingComponentClick = (nextValue, prevValue, name) => {
         this.props.handleRatingChange(this.props.book, nextValue);
-    }
+    };
 
     render()
     {
         const {book, 
-            handleStatusChange,
+            handleShelfChange,
             bookShelfTypes, 
-            getCurrentBookStatus,
+            getCurrentBookShelf,
             isRatingEditable,} = this.props;
 
         const {rating} = this.state;
@@ -31,8 +31,8 @@ class Book extends Component{
                             height: 193, 
                             backgroundImage: `url(${book.imageLinks?book.imageLinks.smallThumbnail:null})` }}></div>
                 <ShelfChange
-                getCurrentBookStatus={getCurrentBookStatus}
-                handleStatusChange={handleStatusChange}
+                getCurrentBookShelf={getCurrentBookShelf}
+                handleShelfChange={handleShelfChange}
                 currentBook={book}
                 bookShelfTypes={bookShelfTypes}/>
                 </div>
@@ -57,10 +57,10 @@ class Book extends Component{
 }
 
 Book.propTypes = {
-    handleStatusChange: PropTypes.func.isRequired,
+    handleShelfChange: PropTypes.func.isRequired,
     book: PropTypes.object.isRequired,
     bookShelfTypes: PropTypes.object.isRequired,
-    getCurrentBookStatus: PropTypes.func
+    getCurrentBookShelf: PropTypes.func
   }
 
 export default Book;

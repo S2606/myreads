@@ -7,7 +7,7 @@ class BookShelf extends Component {
 
         const { shelfTitle, 
             books, 
-            handleStatusChange, 
+            handleShelfChange, 
             bookShelfTypes, 
             handleRatingChange} = this.props;
 
@@ -21,7 +21,7 @@ class BookShelf extends Component {
                             <li key={index}>
                                 <Book 
                                 book={singleBook}
-                                handleStatusChange={handleStatusChange}
+                                handleShelfChange={handleShelfChange}
                                 bookShelfTypes={bookShelfTypes}
                                 handleRatingChange={handleRatingChange}
                                 isRatingEditable={true}/>
@@ -37,7 +37,7 @@ class BookShelf extends Component {
 
 BookShelf.propTypes = {
     shelfTitle: PropTypes.string.isRequired,
-    handleStatusChange: PropTypes.func.isRequired,
+    handleShelfChange: PropTypes.func.isRequired,
     books: PropTypes.array.isRequired,
     bookShelfTypes: PropTypes.object.isRequired,
   }

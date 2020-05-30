@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 import { fetchKeyArrayfromDict, isShelfTypeIgnored } from './utils';
 
 const ListBook = props => {
-    const { bookShelfTypes, books, handleStatusChange, handleRatingChange} = props;
+    const { bookShelfTypes, books, handleShelfChange, handleRatingChange} = props;
     const keyArr = fetchKeyArrayfromDict(bookShelfTypes);
     return(
         <div className="list-books">
@@ -22,7 +22,7 @@ const ListBook = props => {
                             key={index}
                             shelfTitle={bookShelfTypes[bookShelf]}
                             books={books.filter(book => book.shelf === bookShelf)}
-                            handleStatusChange={handleStatusChange}
+                            handleShelfChange={handleShelfChange}
                             bookShelfTypes={bookShelfTypes}
                             handleRatingChange={handleRatingChange}
                         />
@@ -42,7 +42,7 @@ const ListBook = props => {
 }
 
 ListBook.propTypes = {
-    handleStatusChange: PropTypes.func.isRequired,
+    handleShelfChange: PropTypes.func.isRequired,
     books: PropTypes.array.isRequired,
     bookShelfTypes: PropTypes.object.isRequired,
   }

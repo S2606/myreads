@@ -10,9 +10,9 @@ export const fetchKeyArrayfromDict = dict => {
       key_arr.push(status);
     }
     return key_arr;
-  }
+};
 
-export const isShelfTypeIgnored = shelfType => ignoredShelfType.includes(shelfType)
+export const isShelfTypeIgnored = shelfType => ignoredShelfType.includes(shelfType);
 
 export const debounce = (func, delay) => {
   /**
@@ -27,4 +27,4 @@ export const debounce = (func, delay) => {
     clearTimeout(inDebounce)
     inDebounce = setTimeout(() => func.apply(context, args), delay)
   }
-}
+};

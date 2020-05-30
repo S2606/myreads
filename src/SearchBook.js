@@ -23,17 +23,17 @@ class SearchBook extends Component{
           }))
         );
       }
-    } 
+    };
 
     handleSearchTermChange = event => {
         debounce(
           this.handleSearchQuery(event.target.value),
           5000);
-      } 
+    }; 
 
     render(){
 
-        const { handleStatusChange, bookShelfTypes, getCurrentBookStatus } = this.props;
+        const { handleShelfChange, bookShelfTypes, getCurrentBookShelf } = this.props;
         return (
             <div className="search-books">
             <div className="search-books-bar">
@@ -51,9 +51,9 @@ class SearchBook extends Component{
                     this.state.searchedBooks.map((singleBook, index) => (
                         <li key={index}>
                             <Book
-                            getCurrentBookStatus={getCurrentBookStatus} 
+                            getCurrentBookShelf={getCurrentBookShelf} 
                             book={singleBook}
-                            handleStatusChange={handleStatusChange}
+                            handleShelfChange={handleShelfChange}
                             bookShelfTypes={bookShelfTypes}
                             isRatingEditable={false}/>
                         </li> 
@@ -67,9 +67,9 @@ class SearchBook extends Component{
 }
 
 SearchBook.propTypes = {
-  handleStatusChange: PropTypes.func.isRequired,
+  handleShelfChange: PropTypes.func.isRequired,
   bookShelfTypes: PropTypes.object.isRequired,
-  getCurrentBookStatus: PropTypes.func.isRequired,
+  getCurrentBookShelf: PropTypes.func.isRequired,
 }
 
 export default SearchBook;
