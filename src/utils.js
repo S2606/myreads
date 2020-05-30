@@ -1,10 +1,10 @@
 let ignoredShelfType = ['move', 'none'];
 
+/**
+* Fetching an Array of Keys from an Dict of key-value pairs
+* @param {object} dict
+*/
 export const fetchKeyArrayfromDict = dict => {
-     /**
-      * Fetching an Array of Keys from an Dict of key-value pairs
-      * @param dict
-      */
     let key_arr = []
     for (let status in dict){
       key_arr.push(status);
@@ -12,14 +12,18 @@ export const fetchKeyArrayfromDict = dict => {
     return key_arr;
 };
 
+/**
+* Checking if this shelf type comes under the ignored range
+* @param {shelfType} shelfType
+*/
 export const isShelfTypeIgnored = shelfType => ignoredShelfType.includes(shelfType);
 
-export const debounce = (func, delay) => {
-  /**
+/**
     * Debouncing function calls for better performance
-    * @param func Function to be delayed
-    * @param delay time to be delayed for
+    * @param {func} func Function to be delayed
+    * @param {number} delay time to be delayed for
   */
+export const debounce = (func, delay) => {
   let inDebounce
   return function() {
     const context = this

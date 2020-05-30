@@ -9,6 +9,10 @@ class Book extends Component{
         rating: this.props.book.averageRating,
     }
 
+    /**
+   * Function for handling rating changes
+   * @param {string} nextValue Changed rating value
+   */
     handleRatingComponentClick = (nextValue, prevValue, name) => {
         this.props.handleRatingChange(this.props.book, nextValue);
     };

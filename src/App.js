@@ -17,6 +17,11 @@ class BooksApp extends React.Component {
     books: [],
   }
 
+  /**
+   * Function for add new book to the shelf(component state)
+   * @param {string} title - The title of the book.
+   * @param {string} author - The author of the book.
+   */
   handleNewBookEntry = (book, shelf) => {
     book['shelf'] = shelf;
     this.setState(prevState => ({
@@ -24,11 +29,20 @@ class BooksApp extends React.Component {
     }));
   };
 
+  /**
+   * Function to get current Book Status
+   * @param {bookId} Book ID for which status is to be known
+   */
   getCurrentBookShelf = (bookId) => {
     let requiredBook = this.state.books.filter(book => book.id===bookId);
     return requiredBook.length>0?requiredBook[0].shelf:"none";
   };
 
+  /**
+   * Function for handling book shelf change at both the server as well as the state
+   * @param {string} book - The book whose shelf is to be changed.
+   * @param {string} author - The author of the book.
+   */
   handleShelfChange = (book, shelf) => {
     BooksAPI.update(book, shelf).then(
       bookShelfType => {
@@ -68,6 +82,11 @@ class BooksApp extends React.Component {
       });
   }
 
+  /**
+   * Function for handling book rating change at the state level
+   * @param {string} currentBook - The book whose rating is to be changed.
+   * @param {string} rating - The rating of the book.
+   */
   handleRatingChange = (currentBook, rating) => {
     // Since (total/count) = average so finding total rating count
     let newRatingCount=0, newAverageRating=0;

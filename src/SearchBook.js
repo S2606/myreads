@@ -10,6 +10,10 @@ class SearchBook extends Component{
         searchedBooks: [],
     }
 
+    /**
+   * Function for handling search query
+   * @param {string} query - The query to be searched.
+   */
     handleSearchQuery = query => {
       if(query===""){
         this.setState({

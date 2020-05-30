@@ -10,6 +10,10 @@ class ShelfChange extends Component{
         this.props.getCurrentBookShelf(this.props.currentBook.id),
     };
 
+    /**
+   * Function for handling shelf changes
+   * @param {Event} event DOM Event
+   */
     handleSelectChange = event => {
         this.props.handleShelfChange(this.props.currentBook, event.target.value);
     };
