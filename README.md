@@ -1,6 +1,6 @@
 # MyReads Project
 
-Porject for tracking the book shelf status and fetch new books from search directory
+Project for tracking book shelf status and fetch new books from search directory
 
 ## TL;DR
 
