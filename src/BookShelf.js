@@ -5,7 +5,11 @@ import Book from './Book';
 class BookShelf extends Component {
     render(){
 
-        const { shelfTitle, books, handleStatusChange, bookShelfTypes} = this.props;
+        const { shelfTitle, 
+            books, 
+            handleStatusChange, 
+            bookShelfTypes, 
+            handleRatingChange} = this.props;
 
         return (
             <div className="bookshelf">
@@ -18,7 +22,9 @@ class BookShelf extends Component {
                                 <Book 
                                 book={singleBook}
                                 handleStatusChange={handleStatusChange}
-                                bookShelfTypes={bookShelfTypes}/>
+                                bookShelfTypes={bookShelfTypes}
+                                handleRatingChange={handleRatingChange}
+                                isRatingEditable={true}/>
                             </li> 
                             ))
                         }

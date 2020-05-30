@@ -29,6 +29,8 @@ class BooksApp extends React.Component {
     return requiredBook.length>0?requiredBook[0].shelf:"none";
   }
 
+
+
   handleStatusChange = (book, shelf) => {
     BooksAPI.update(book, shelf).then(
       bookShelfType => {
@@ -68,6 +70,41 @@ class BooksApp extends React.Component {
       });
   }
 
+  handleRatingChange = (currentBook, rating) => {
+    // Since (total/count) = average so finding total rating count
+    let newRatingCount=0, newAverageRating=0;
+    if(!isNaN(currentBook.averageRating) && !isNaN(currentBook.ratingsCount)){
+        let totalBookRating = currentBook.averageRating * currentBook.ratingsCount;
+        newRatingCount  = currentBook.ratingsCount + 1;
+        // Calculating new average from updated count and total rating
+        newAverageRating = (totalBookRating+rating)/newRatingCount;
+    } else {
+      newRatingCount  = 1;
+      newAverageRating = rating;
+    }
+    
+    this.setState(prevState => {
+      const books = prevState.books.map((book) => {
+        if (book.id === currentBook.id) {
+          const updatedBook = {
+            ...book,
+            averageRating: newAverageRating,
+            ratingsCount: newRatingCount,
+          };
+   
+          return updatedBook;
+        }
+   
+        return book;
+      });
+
+      return {
+        books,
+      };
+    });
+    
+  }
+
   componentDidMount() {
       BooksAPI.getAll().then(
         (books) => this.setState({
@@ -84,6 +121,7 @@ class BooksApp extends React.Component {
             bookShelfTypes={this.state.bookShelfTypes}
             books={this.state.books}
             handleStatusChange={this.handleStatusChange}
+            handleRatingChange={this.handleRatingChange}
             />
         )}/>
         <Route path='/search' render={() => (
@@ -91,6 +129,7 @@ class BooksApp extends React.Component {
             getCurrentBookStatus={this.getCurrentBookStatus}
             handleStatusChange={this.handleStatusChange}
             bookShelfTypes={this.state.bookShelfTypes}
+            handleRatingChange={this.handleRatingChange}
             />
         )}/>
       </div>

@@ -1,32 +1,59 @@
-import React from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import ShelfChange from './ShelfChange';
+import StarRatingComponent from 'react-star-rating-component';
 
-const Book = props => {
-    const {book, handleStatusChange, bookShelfTypes, getCurrentBookStatus } = props;
+class Book extends Component{
 
-    return (
-        <div className="book">
-            <div className="book-top">
-            <div className="book-cover" 
-            style={{ width: 128, 
-                        height: 193, 
-                        backgroundImage: `url(${book.imageLinks?book.imageLinks.smallThumbnail:null})` }}></div>
-            <ShelfChange
-            getCurrentBookStatus={getCurrentBookStatus}
-            handleStatusChange={handleStatusChange}
-            currentBook={book}
-            bookShelfTypes={bookShelfTypes}/>
+    state = {
+        rating: this.props.book.averageRating,
+    }
+
+    handleRatingComponentClick = (nextValue, prevValue, name) => {
+        this.props.handleRatingChange(this.props.book, nextValue);
+    }
+
+    render()
+    {
+        const {book, 
+            handleStatusChange,
+            bookShelfTypes, 
+            getCurrentBookStatus,
+            isRatingEditable,} = this.props;
+
+        const {rating} = this.state;
+
+        return (
+            <div className="book">
+                <div className="book-top">
+                <div className="book-cover" 
+                style={{ width: 128, 
+                            height: 193, 
+                            backgroundImage: `url(${book.imageLinks?book.imageLinks.smallThumbnail:null})` }}></div>
+                <ShelfChange
+                getCurrentBookStatus={getCurrentBookStatus}
+                handleStatusChange={handleStatusChange}
+                currentBook={book}
+                bookShelfTypes={bookShelfTypes}/>
+                </div>
+                <div className="book-title">{book.title}</div>
+                <div className="book-authors">
+                    {book.authors?
+                    book.authors.reduce((acc, cur) => acc+","+cur):
+                    null
+                    }
+                </div>
+                <StarRatingComponent 
+                    name="starRate" 
+                    starCount={5}
+                    value={rating}
+                    starColor={'#60ac5d'}
+                    editing={isRatingEditable}
+                    onStarClick={this.handleRatingComponentClick}
+                />
             </div>
-            <div className="book-title">{book.title}</div>
-            <div className="book-authors">
-                {book.authors?
-                book.authors.reduce((acc, cur) => acc+","+cur):
-                null
-                }
-            </div>
-        </div>
-    );
+        );
+    }
 }
 
 Book.propTypes = {

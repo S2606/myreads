@@ -20,7 +20,8 @@ class ShelfChange extends Component{
         const keyArr = fetchKeyArrayfromDict(bookShelfTypes);
 
         return (
-            <div className="book-shelf-changer">
+            <div 
+            className={`book-shelf-changer book-shelf-changer-${this.state.value}`}>
                 <select 
                 value={this.state.value} 
                 onChange={this.handleSelectChange}>

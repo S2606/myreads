@@ -54,7 +54,8 @@ class SearchBook extends Component{
                             getCurrentBookStatus={getCurrentBookStatus} 
                             book={singleBook}
                             handleStatusChange={handleStatusChange}
-                            bookShelfTypes={bookShelfTypes}/>
+                            bookShelfTypes={bookShelfTypes}
+                            isRatingEditable={false}/>
                         </li> 
                     ))
                 }
