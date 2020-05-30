@@ -4,37 +4,37 @@ Project for tracking book shelf status and fetch new books from search directory
 
 ## TL;DR
 
-To get started developing right away:
+To get started right away:
 
 * install all project dependencies with `npm install`
 * start the development server with `npm start`
 
-## What You're Getting
+## File Structure
 
 ```bash
 ├── CONTRIBUTING.md
 ├── README.md - This file.
-├── SEARCH_TERMS.md # The whitelisted short collection of available search terms for you to use with your app.
-├── package.json # npm package manager file. It's unlikely that you'll need to modify this.
+├── SEARCH_TERMS.md # The whitelisted short collection of available search terms to use with the app.
+├── package.json # npm package manager file.
 ├── public
-│   ├── favicon.ico # React Icon, You may change if you wish.
-│   └── index.html # DO NOT MODIFY
+│   ├── favicon.ico # React Icon
+│   └── index.html
 └── src
-    ├── App.css # Styles for your app. Feel free to customize this as you desire.
-    ├── App.js # This is the root of your app. Contains static HTML right now.
-    ├── App.test.js # Used for testing. Provided with Create React App. Testing is encouraged, but not required.
-    ├── BooksAPI.js # A JavaScript API for the provided Udacity backend. Instructions for the methods are below.
-    ├── icons # Helpful images for your app. Use at your discretion.
+    ├── App.css # Styles for app.
+    ├── App.js # This is the root of the app.
+    ├── App.test.js # Used for testing.
+    ├── BooksAPI.js # A JavaScript API for the provided backend.
+    ├── icons # Images for the app.
     │   ├── add.svg
     │   ├── arrow-back.svg
     │   └── arrow-drop-down.svg
-    ├── index.css # Global styles. You probably won't need to change anything here.
-    └── index.js # You should not need to modify this file. It is used for DOM rendering only.
+    ├── index.css # Global styles.
+    └── index.js # It is used for DOM rendering only.
 ```
 
 ## Important
 
-The backend API uses a fixed set of cached search results and is limited to a particular set of search terms, which can be found in [SEARCH_TERMS.md](SEARCH_TERMS.md). That list of terms are the _only_ terms that will work with the backend, so don't be surprised if your searches for Basket Weaving or Bubble Wrap don't come back with any results.
+The backend API uses a fixed set of cached search results and is limited to a particular set of search terms, which can be found in [SEARCH_TERMS.md](SEARCH_TERMS.md). That list of terms are the _only_ terms that will work with the backend.
 
 ## Create React App
 
