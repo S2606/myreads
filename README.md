@@ -1,6 +1,6 @@
 # MyReads Project
 
-Reject for tracting the book shekf status and fetch new books from search directory
+Porject for tracking the book shelf status and fetch new books from search directory
 
 ## TL;DR
 
